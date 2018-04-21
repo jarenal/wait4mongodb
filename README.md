@@ -12,7 +12,7 @@ npm install wait4mongodb --save
 
 ## Running the tests
 
-Explain what these tests test and why
+Run the tests using the next command.
 
 ```
 npm test
