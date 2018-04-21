@@ -26,5 +26,9 @@
     "chai-as-promised": "^7.1.1",
     "mocha": "^5.1.1",
     "sinon": "^4.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jarenal/wait4mongodb"
   }
 }
