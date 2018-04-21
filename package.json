@@ -1,6 +1,6 @@
 {
   "name": "wait4mongodb",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "This module will execute a task as soon MongoDB is ready.",
   "main": "./src/wait4mongodb.js",
   "scripts": {
