@@ -1,6 +1,6 @@
 {
   "name": "wait4mongodb",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This module will execute a task as soon MongoDB is ready. Very useful for multi container environments like Docker Compose.",
   "main": "./src/wait4mongodb.js",
   "scripts": {
