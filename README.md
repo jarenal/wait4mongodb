@@ -1,6 +1,6 @@
 # wait4MongoDB
 
-A little NodeJS module that will execute a task as soon MongoDB is ready.
+A little NodeJS module that will execute a task as soon MongoDB is ready. Very useful for multi container environments like Docker Compose.
 
 ## Installing
 

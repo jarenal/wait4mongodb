@@ -1,19 +1,28 @@
 {
   "name": "wait4mongodb",
   "version": "1.0.3",
-  "description": "This module will execute a task as soon MongoDB is ready.",
+  "description": "This module will execute a task as soon MongoDB is ready. Very useful for multi container environments like Docker Compose.",
   "main": "./src/wait4mongodb.js",
   "scripts": {
     "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha './tests/*.spec.js'"
   },
   "keywords": [
     "wait",
+    "mongo",
     "mongodb",
+    "ready",
+    "running",
     "timer",
     "interval",
     "timeout",
     "connect",
-    "task"
+    "task",
+    "docker",
+    "compose",
+    "docker-compose",
+    "online",
+    "multi-container",
+    "container"
   ],
   "author": "Jose Antonio <jguidos@hotmail.com>",
   "license": "ISC",
