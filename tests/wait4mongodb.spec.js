@@ -66,6 +66,20 @@ describe('wait4mongodb', function () {
       });
 
     });
+  
+    it('MongoClient should receive options', async function() {
+      MongoClientConnectStub = sandbox
+        .stub(MongoClient, 'connect')
+        .resolves({ client: 'dummyClient' });
+      await wait4MongoDB.tryConnect(mongoUrl, 3, 200, {ssl: true}, callback);
+      expect(callback.calledOnce).to.be.true;
+      expect(callback.args[0][0]).to.be.null;
+      expect(callback.args[0][1]).to.deep.equal({client: 'dummyClient'});
+      expect(MongoClientConnectStub.called).to.be.true;
+      expect(MongoClientConnectStub.callCount).to.equal(1);
+      expect(MongoClientConnectStub.args[0][0]).to.equal(mongoUrl);
+      expect(MongoClientConnectStub.args[0][1]).to.deep.equal({ssl: true});
+    });
   });
   
   describe('tryConnect() using Promises', function () {
@@ -108,6 +122,21 @@ describe('wait4mongodb', function () {
         expect(client).to.equal('Ready!');
         expect(MongoClientConnectStub.callCount).to.equal(2);
         expect(MongoClientConnectStub.args[0][0]).to.equal(mongoUrl);
+        done();
+      }).catch(err => {
+        // never
+      });
+    });
+  
+    it('MongoClient should receive options', function(done) {
+      MongoClientConnectStub = sandbox
+        .stub(MongoClient, 'connect')
+        .resolves('Ready!');
+      wait4MongoDB.tryConnect(mongoUrl, 3, 200, {ssl: true}).then(client => {
+        expect(client).to.equal('Ready!');
+        expect(MongoClientConnectStub.callCount).to.equal(1);
+        expect(MongoClientConnectStub.args[0][0]).to.equal(mongoUrl);
+        expect(MongoClientConnectStub.args[0][1]).to.deep.equal({ssl: true});
         done();
       }).catch(err => {
         // never

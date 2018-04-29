@@ -20,6 +20,18 @@ npm test
 
 ## Usage
 
+### Parameters
+
+```javascript
+wait4mongodb.tryConnect(url, times, interval, [options], [callback]);
+````
+
+* **url**: The connection URI string
+* **times**: How many times will try to connect.
+* **interval**: Time in milliseconds between retries.
+* **options (optional)**: MongoClient settings. See [MongoClient documentation](http://mongodb.github.io/node-mongodb-native/3.0/api/MongoClient.html) for more info.
+* **callback (optional)**: Callback function.
+
 ### Using callbacks
 
 ```javascript
@@ -28,7 +40,7 @@ const wait4mongodb = require('wait4mongodb');
 /* The next example will try to connect to MongoDB 20 times (every 500 milliseconds) 
  *   and will return a timeout (if MongoDB is down) after 10 sec. 
  */
-wait4mongodb.tryConnect('mongodb://localhost:27017', 20, 500, (err, client) => {
+wait4mongodb.tryConnect('mongodb://localhost:27017', 20, 500, {poolSize: 3}, (err, client) => {
   if (err) {
     console.log('MongoDB timeout');
   } else {
@@ -46,7 +58,7 @@ const wait4mongodb = require('wait4mongodb');
 /* The next example will try to connect to MongoDB 20 times (every 500 milliseconds) 
  *   and will return a timeout (if MongoDB is down) after 10 sec. 
  */
-wait4mongodb.tryConnect('mongodb://localhost:27017', 20, 500).then(client => {
+wait4mongodb.tryConnect('mongodb://localhost:27017', 20, 500, {poolSize: 3}).then(client => {
   console.log('MongoDB is ready!');
   // You will have available MongoDB client from here.
 }).catch(err => {
